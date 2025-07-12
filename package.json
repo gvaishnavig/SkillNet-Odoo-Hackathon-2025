@@ -1,7 +1,11 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "dotenv": "^17.2.0",
     "mongodb": "^6.17.0",
     "react-router-dom": "^7.6.3"
+=======
+    "react-icons": "^5.5.0"
+>>>>>>> 5aba66b491594ee254e03f0bf33e06fe044e67f0
   }
 }
