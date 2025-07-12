@@ -165,14 +165,32 @@ export default function Profile() {
         </div>
 
         {/* Edit Profile */}
-        <button
+        {/* <button
           style={styles.editBtn}
           onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#2563eb")}
           onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#3b82f6")}
         >
           <FaEdit />
           Edit Profile
-        </button>
+        </button> */}
+        <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          <button
+            style={styles.editBtn}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#2563eb")}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#3b82f6")}
+          >
+            <FaEdit />
+            Edit Profile
+          </button>
+
+          <a href="http://localhost:5173/view/2" style={{ ...styles.editBtn, backgroundColor: "#10b981" }}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#059669")}
+            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#10b981")}
+          >
+            Request Swap
+          </a>
+        </div>
+
       </div>
     </div>
   );
