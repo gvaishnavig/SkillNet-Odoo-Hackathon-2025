@@ -46,6 +46,7 @@ const Home = () => {
       fontSize: "1.75rem",
       fontWeight: "bold",
       color: "#4338ca",
+      profilePhoto: "/images/RiyaSharma.jpeg"
     },
     searchBar: {
       display: "flex",
@@ -142,7 +143,7 @@ const Home = () => {
     <div style={styles.page}>
       {/* Navbar */}
       <header style={styles.navbar}>
-        <h1 style={styles.logo}><img src="clientimages\skillNetLogo.jpg" alt="" /></h1>
+        <h1 style={styles.logo}>SkillNet</h1>
 
         <div style={styles.searchBar}>
           <select style={styles.input}>

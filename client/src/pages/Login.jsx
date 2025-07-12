@@ -82,6 +82,7 @@ export default function Login() {
       cursor: "pointer",
       fontFamily: "Segoe UI, sans-serif",
       transition: "background 0.3s",
+      textDecoration: 'none'
     },
     buttonHover: {
       backgroundColor: "#2563eb",
@@ -126,14 +127,16 @@ export default function Login() {
             </div>
 
             {/* Submit */}
-            <button
-              type="submit"
-              style={styles.button}
-              onMouseOver={(e) => (e.target.style.background = styles.buttonHover.backgroundColor)}
-              onMouseOut={(e) => (e.target.style.background = styles.button.backgroundColor)}
-            >
-              Login
-            </button>
+      <Link to="/profile/1" style={{ textDecoration: 'none' }}>
+          <button
+           type="button"
+           style={styles.button}
+           onMouseOver={(e) => (e.target.style.background = styles.buttonHover.backgroundColor)}
+          onMouseOut={(e) => (e.target.style.background = styles.button.backgroundColor)}
+  >
+           Login
+          </button>
+       </Link>
 
             {/* Forgot */}
             <div style={styles.forgot}>
