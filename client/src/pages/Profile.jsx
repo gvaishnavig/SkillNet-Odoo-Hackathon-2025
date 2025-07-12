@@ -1,9 +1,7 @@
-import { useParams } from "react-router-dom";
+import React from "react";
+import { FaUserCircle, FaEdit, FaSignOutAlt, FaClock, FaStar } from "react-icons/fa";
 
 export default function Profile() {
-  const { userId } = useParams();
-
-  // Dummy data - replace with real fetch/API call later
   const user = {
     name: "Jane Doe",
     profilePhoto: "https://via.placeholder.com/100",
@@ -13,49 +11,166 @@ export default function Profile() {
     rating: 4.8,
   };
 
+  const styles = {
+    page: {
+      minHeight: "100vh",
+      background: "linear-gradient(to right, #f0f4ff, #e7ecff)",
+      padding: "2rem 1rem",
+      fontFamily: "Segoe UI, sans-serif",
+    },
+    header: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: "2rem",
+    },
+    title: {
+      fontSize: "1.5rem",
+      fontWeight: "700",
+      color: "#1e3a8a",
+    },
+    logoutBtn: {
+      display: "flex",
+      alignItems: "center",
+      gap: "0.4rem",
+      color: "#dc2626",
+      fontWeight: "500",
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      fontSize: "1rem",
+    },
+    card: {
+      maxWidth: "600px",
+      margin: "0 auto",
+      backgroundColor: "#ffffff",
+      padding: "2rem",
+      borderRadius: "1rem",
+      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+    },
+    profileHeader: {
+      display: "flex",
+      alignItems: "center",
+      gap: "1.5rem",
+      marginBottom: "1.5rem",
+    },
+    avatar: {
+      width: "100px",
+      height: "100px",
+      borderRadius: "50%",
+      border: "3px solid #3b82f6",
+    },
+    name: {
+      fontSize: "1.75rem",
+      fontWeight: "700",
+      color: "#0f172a",
+      marginBottom: "0.4rem",
+    },
+    subText: {
+      fontSize: "0.95rem",
+      color: "#475569",
+      margin: "0.25rem 0",
+      display: "flex",
+      alignItems: "center",
+      gap: "0.5rem",
+    },
+    section: {
+      marginBottom: "1.5rem",
+    },
+    sectionTitle: {
+      fontSize: "1.1rem",
+      fontWeight: "600",
+      color: "#1e293b",
+      marginBottom: "0.75rem",
+    },
+    tagContainer: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "0.5rem",
+    },
+    tag: {
+      backgroundColor: "#e0f2fe",
+      color: "#0369a1",
+      padding: "0.4rem 0.75rem",
+      fontSize: "0.875rem",
+      borderRadius: "9999px",
+      fontWeight: "500",
+    },
+    editBtn: {
+      display: "flex",
+      alignItems: "center",
+      gap: "0.5rem",
+      padding: "0.6rem 1.2rem",
+      fontSize: "1rem",
+      fontWeight: "600",
+      backgroundColor: "#3b82f6",
+      color: "white",
+      border: "none",
+      borderRadius: "0.5rem",
+      cursor: "pointer",
+      transition: "background-color 0.3s",
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-6">
+    <div style={styles.page}>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-xl font-bold">SkillNet</h1>
-        <button className="text-red-600 hover:underline font-medium">Logout</button>
+      <div style={styles.header}>
+        <h1 style={styles.title}>SkillNet</h1>
+        <button style={styles.logoutBtn}>
+          <FaSignOutAlt /> Logout
+        </button>
       </div>
 
       {/* Profile Card */}
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center gap-6 mb-6">
-          <img
-            src={user.profilePhoto}
-            alt="Profile"
-            className="w-24 h-24 rounded-full border-2 border-blue-500"
-          />
+      <div style={styles.card}>
+        <div style={styles.profileHeader}>
+          <img src={user.profilePhoto} alt="Profile" style={styles.avatar} />
           <div>
-            <h2 className="text-2xl font-bold">{user.name}</h2>
-            <p className="text-gray-600">Availability: {user.availability}</p>
-            <p className="text-yellow-600">⭐ {user.rating} / 5</p>
+            <h2 style={styles.name}>
+              <FaUserCircle style={{ marginRight: "0.4rem", color: "#0f172a" }} />
+              {user.name}
+            </h2>
+            <p style={styles.subText}>
+              <FaClock /> Availability: {user.availability}
+            </p>
+            <p style={styles.subText}>
+              <FaStar style={{ color: "#facc15" }} /> {user.rating} / 5
+            </p>
           </div>
         </div>
 
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold">Skills Offered</h3>
-          <ul className="list-disc list-inside text-gray-700">
+        {/* Skills Offered */}
+        <div style={styles.section}>
+          <h3 style={styles.sectionTitle}>Skills Offered</h3>
+          <div style={styles.tagContainer}>
             {user.skillsOffered.map((skill, index) => (
-              <li key={index}>{skill}</li>
+              <span key={index} style={styles.tag}>
+                {skill}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
 
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold">Skills Wanted</h3>
-          <ul className="list-disc list-inside text-gray-700">
+        {/* Skills Wanted */}
+        <div style={styles.section}>
+          <h3 style={styles.sectionTitle}>Skills Wanted</h3>
+          <div style={styles.tagContainer}>
             {user.skillsWanted.map((skill, index) => (
-              <li key={index}>{skill}</li>
+              <span key={index} style={styles.tag}>
+                {skill}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
 
-        {/* Only show edit if logged in user === userId (for now, always show) */}
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        {/* Edit Profile */}
+        <button
+          style={styles.editBtn}
+          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#2563eb")}
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#3b82f6")}
+        >
+          <FaEdit />
           Edit Profile
         </button>
       </div>

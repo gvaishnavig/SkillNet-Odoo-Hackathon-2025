@@ -5,7 +5,6 @@ export default function SwapRequestForm() {
   const { userId } = useParams();
   const navigate = useNavigate();
 
-  // Simulated user data (receiver)
   const receiver = {
     name: "Robert Lane",
     profilePhoto: "https://via.placeholder.com/100",
@@ -13,54 +12,138 @@ export default function SwapRequestForm() {
     skillsWanted: ["Public Speaking"],
   };
 
-  // Simulated current user skills
   const currentUserSkills = ["React", "Photoshop", "Public Speaking"];
-
   const [selectedSkill, setSelectedSkill] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Replace with actual request logic (API call etc.)
     console.log("Swap Request Sent To:", receiver.name);
     console.log("Offering:", selectedSkill);
     console.log("Message:", message);
-
     alert("Swap request sent!");
     navigate("/swap-requests");
   };
 
+  const styles = {
+    page: {
+      minHeight: "100vh",
+      padding: "2rem 1rem",
+      background: "linear-gradient(to right, #e0f2ff, #f0f9ff)",
+      fontFamily: "Segoe UI, sans-serif",
+    },
+    container: {
+      maxWidth: "600px",
+      margin: "0 auto",
+      backgroundColor: "#ffffff",
+      padding: "2rem",
+      borderRadius: "1rem",
+      boxShadow: "0 6px 20px rgba(0, 0, 0, 0.08)",
+    },
+    title: {
+      fontSize: "1.75rem",
+      fontWeight: "700",
+      marginBottom: "1.5rem",
+      color: "#0f172a",
+    },
+    profile: {
+      display: "flex",
+      alignItems: "center",
+      gap: "1rem",
+      marginBottom: "1.5rem",
+      padding: "1rem",
+      backgroundColor: "#f1f5f9",
+      borderRadius: "0.75rem",
+    },
+    avatar: {
+      width: "64px",
+      height: "64px",
+      borderRadius: "50%",
+      border: "2px solid #3b82f6",
+    },
+    receiverName: {
+      fontWeight: "600",
+      fontSize: "1.1rem",
+      color: "#1e293b",
+    },
+    receiverDetail: {
+      fontSize: "0.9rem",
+      color: "#475569",
+      marginTop: "0.25rem",
+    },
+    label: {
+      fontWeight: "600",
+      fontSize: "0.95rem",
+      marginBottom: "0.4rem",
+      display: "block",
+      color: "#1e293b",
+    },
+    select: {
+      width: "100%",
+      padding: "0.6rem 0.75rem",
+      border: "1px solid #cbd5e1",
+      borderRadius: "0.5rem",
+      fontSize: "1rem",
+      backgroundColor: "#f9fafb",
+      outline: "none",
+    },
+    textarea: {
+      width: "100%",
+      padding: "0.75rem",
+      border: "1px solid #cbd5e1",
+      borderRadius: "0.5rem",
+      fontSize: "1rem",
+      resize: "none",
+      backgroundColor: "#f9fafb",
+      outline: "none",
+    },
+    button: {
+      width: "100%",
+      padding: "0.75rem",
+      backgroundColor: "#2563eb",
+      color: "white",
+      fontWeight: "600",
+      fontSize: "1rem",
+      border: "none",
+      borderRadius: "0.5rem",
+      cursor: "pointer",
+      marginTop: "1rem",
+      transition: "background-color 0.3s",
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-6">
-      <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Send Swap Request</h1>
+    <div style={styles.page}>
+      <div style={styles.container}>
+        <h1 style={styles.title}>Send Swap Request</h1>
 
         {/* Receiver Info */}
-        <div className="flex items-center gap-4 mb-6">
+        <div style={styles.profile}>
           <img
             src={receiver.profilePhoto}
             alt={receiver.name}
-            className="w-16 h-16 rounded-full border-2 border-blue-500"
+            style={styles.avatar}
           />
           <div>
-            <p className="font-semibold">{receiver.name}</p>
-            <p className="text-sm text-gray-600">
+            <p style={styles.receiverName}>{receiver.name}</p>
+            <p style={styles.receiverDetail}>
               Wants help with:{" "}
-              <span className="font-medium">{receiver.skillsWanted.join(", ")}</span>
+              <strong style={{ color: "#1d4ed8" }}>
+                {receiver.skillsWanted.join(", ")}
+              </strong>
             </p>
           </div>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="block font-medium text-sm mb-1">Select a skill to offer</label>
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <label style={styles.label}>Select a skill to offer</label>
             <select
               value={selectedSkill}
               onChange={(e) => setSelectedSkill(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={styles.select}
             >
               <option value="">-- Select Skill --</option>
               {currentUserSkills.map((skill, index) => (
@@ -71,20 +154,22 @@ export default function SwapRequestForm() {
             </select>
           </div>
 
-          <div>
-            <label className="block font-medium text-sm mb-1">Message (optional)</label>
+          <div style={{ marginBottom: "1.5rem" }}>
+            <label style={styles.label}>Message (optional)</label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
-              placeholder="Add a note (optional)"
-              className="w-full border border-gray-300 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Add a short note..."
+              style={styles.textarea}
             ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            style={styles.button}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#1d4ed8")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#2563eb")}
           >
             Send Request
           </button>
@@ -93,4 +178,5 @@ export default function SwapRequestForm() {
     </div>
   );
 }
+
 

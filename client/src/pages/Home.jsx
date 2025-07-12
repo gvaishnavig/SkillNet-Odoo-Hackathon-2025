@@ -23,14 +23,129 @@ const Home = () => {
     },
   ];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-sky-50 to-indigo-100 text-gray-800">
-      {/* Navbar */}
-      <header className="bg-white shadow-md px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 sticky top-0 z-10">
-        <h1 className="text-2xl font-bold text-indigo-700">SkillNet</h1>
+  const styles = {
+    page: {
+      minHeight: "100vh",
+      background: "linear-gradient(to bottom right, #ffffff, #e0f2ff)",
+      color: "#1e293b",
+      fontFamily: "Segoe UI, sans-serif",
+    },
+    navbar: {
+      backgroundColor: "#ffffff",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+      padding: "1rem 2rem",
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+      alignItems: "center",
+      position: "sticky",
+      top: 0,
+      zIndex: 10,
+    },
+    logo: {
+      fontSize: "1.75rem",
+      fontWeight: "bold",
+      color: "#4338ca",
+    },
+    searchBar: {
+      display: "flex",
+      gap: "0.5rem",
+      alignItems: "center",
+      marginTop: "1rem",
+    },
+    input: {
+      padding: "0.5rem 0.75rem",
+      borderRadius: "0.5rem",
+      border: "1px solid #cbd5e1",
+      fontSize: "1rem",
+    },
+    searchBtn: {
+      backgroundColor: "#4338ca",
+      color: "white",
+      border: "none",
+      padding: "0.5rem 1rem",
+      borderRadius: "0.5rem",
+      cursor: "pointer",
+    },
+    loginBtn: {
+      color: "#4338ca",
+      fontWeight: "600",
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
+    main: {
+      padding: "2rem 1rem",
+      maxWidth: "900px",
+      margin: "0 auto",
+    },
+    userCard: {
+      backgroundColor: "#ffffff",
+      boxShadow: "0 4px 16px rgba(0,0,0,0.06)",
+      borderRadius: "1rem",
+      padding: "1.5rem",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      flexWrap: "wrap",
+      marginBottom: "1.5rem",
+    },
+    userInfo: {
+      display: "flex",
+      gap: "1rem",
+      alignItems: "center",
+    },
+    avatar: {
+      width: "64px",
+      height: "64px",
+      borderRadius: "50%",
+      border: "2px solid #6366f1",
+    },
+    skillText: {
+      marginTop: "0.3rem",
+      fontSize: "0.9rem",
+      color: "#475569",
+    },
+    tagBlue: { color: "#2563eb" },
+    tagPink: { color: "#db2777" },
+    ratingText: {
+      fontSize: "0.9rem",
+      textAlign: "center",
+    },
+    requestBtn: {
+      marginTop: "0.5rem",
+      backgroundColor: "#4338ca",
+      color: "white",
+      border: "none",
+      padding: "0.4rem 1rem",
+      borderRadius: "0.5rem",
+      cursor: "not-allowed",
+      opacity: 0.7,
+    },
+    pagination: {
+      display: "flex",
+      justifyContent: "center",
+      padding: "2rem 0",
+      gap: "0.5rem",
+    },
+    pageBtn: {
+      padding: "0.4rem 0.8rem",
+      border: "1px solid #d1d5db",
+      borderRadius: "0.4rem",
+      backgroundColor: "white",
+      cursor: "pointer",
+    },
+  };
 
-        <div className="flex gap-2 items-center w-full md:w-auto">
-          <select className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+  return (
+    <div style={styles.page}>
+      {/* Navbar */}
+      <header style={styles.navbar}>
+        <h1 style={styles.logo}>SkillNet</h1>
+
+        <div style={styles.searchBar}>
+          <select style={styles.input}>
             <option>Availability</option>
             <option>Weekends</option>
             <option>Evenings</option>
@@ -38,53 +153,41 @@ const Home = () => {
           <input
             type="text"
             placeholder="Search skills..."
-            className="border rounded px-3 py-2 w-full md:w-56 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            style={styles.input}
           />
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-            Search
-          </button>
+          <button style={styles.searchBtn}>Search</button>
         </div>
 
         <button
           onClick={() => navigate("/login")}
-          className="text-indigo-600 font-semibold hover:underline"
+          style={styles.loginBtn}
         >
           Login
         </button>
       </header>
 
       {/* User List */}
-      <main className="p-6 space-y-6 max-w-4xl mx-auto">
+      <main style={styles.main}>
         {users.map((user, idx) => (
-          <div
-            key={idx}
-            className="bg-white shadow-lg p-5 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4"
-          >
-            <div className="flex items-center gap-5">
-              <img
-                src={user.profilePhoto}
-                alt="profile"
-                className="w-16 h-16 rounded-full border-2 border-indigo-400"
-              />
+          <div key={idx} style={styles.userCard}>
+            <div style={styles.userInfo}>
+              <img src={user.profilePhoto} alt="profile" style={styles.avatar} />
               <div>
-                <h2 className="font-semibold text-lg text-gray-800">{user.name}</h2>
-                <p className="text-sm text-gray-700 mt-1">
+                <h2 style={{ fontSize: "1.1rem", fontWeight: "600" }}>{user.name}</h2>
+                <p style={styles.skillText}>
                   <strong>Offered:</strong>{" "}
-                  <span className="text-blue-600">{user.skillsOffered.join(", ")}</span> |{" "}
+                  <span style={styles.tagBlue}>{user.skillsOffered.join(", ")}</span> | {" "}
                   <strong>Wanted:</strong>{" "}
-                  <span className="text-pink-600">{user.skillsWanted.join(", ")}</span>
+                  <span style={styles.tagPink}>{user.skillsWanted.join(", ")}</span>
                 </p>
-                <p className="text-sm text-gray-600 mt-1">
+                <p style={styles.skillText}>
                   <strong>Availability:</strong> {user.availability}
                 </p>
               </div>
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-sm text-gray-700">Rating: {user.rating} ⭐</p>
-              <button
-                className="mt-2 bg-indigo-600 text-white px-4 py-1.5 rounded hover:bg-indigo-700 disabled:opacity-50"
-                disabled
-              >
+            <div style={{ textAlign: "center" }}>
+              <p style={styles.ratingText}>Rating: {user.rating} ⭐</p>
+              <button style={styles.requestBtn} disabled>
                 Request
               </button>
             </div>
@@ -93,21 +196,13 @@ const Home = () => {
       </main>
 
       {/* Pagination */}
-      <div className="flex justify-center py-6">
-        <nav className="flex gap-2">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <button
-              key={n}
-              className="px-3 py-1 rounded border text-gray-700 hover:bg-indigo-100 hover:text-indigo-700"
-            >
-              {n}
-            </button>
-          ))}
-        </nav>
+      <div style={styles.pagination}>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <button key={n} style={styles.pageBtn}>{n}</button>
+        ))}
       </div>
     </div>
   );
 };
 
 export default Home;
-
