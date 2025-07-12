@@ -17,7 +17,7 @@ const Home = () => {
     <div className="min-h-screen bg-gray-100 text-gray-800">
       {/* Navbar */}
       <header className="bg-white shadow p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">Skill Swap Platform</h1>
+        <h1 className="text-xl font-bold">SkillNet</h1>
         <div className="flex gap-2 items-center">
           <select className="border px-2 py-1 rounded">
             <option>Availability</option>
