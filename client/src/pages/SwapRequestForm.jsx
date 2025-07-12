@@ -7,7 +7,7 @@ export default function SwapRequestForm() {
 
   const receiver = {
     name: "Robert Lane",
-    profilePhoto: "https://via.placeholder.com/100",
+    profilePhoto: "/images/RobertLane.jpeg",
     skillsOffered: ["Excel", "Photography"],
     skillsWanted: ["Public Speaking"],
   };
