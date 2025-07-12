@@ -142,7 +142,7 @@ const Home = () => {
     <div style={styles.page}>
       {/* Navbar */}
       <header style={styles.navbar}>
-        <h1 style={styles.logo}>SkillNet</h1>
+        <h1 style={styles.logo}><img src="clientimages\skillNetLogo.jpg" alt="" /></h1>
 
         <div style={styles.searchBar}>
           <select style={styles.input}>
