@@ -6,7 +6,7 @@ export default function ViewProfile() {
 
   const user = {
     name: "John White",
-    profilePhoto: "https://via.placeholder.com/100",
+    profilePhoto: "/images/JohnWhite.jpeg",
     skillsOffered: ["Video Editing", "Excel"],
     skillsWanted: ["Illustrator", "Public Speaking"],
     availability: "Weekends",

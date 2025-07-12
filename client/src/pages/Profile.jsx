@@ -4,7 +4,7 @@ import { FaUserCircle, FaEdit, FaSignOutAlt, FaClock, FaStar } from "react-icons
 export default function Profile() {
   const user = {
     name: "Jane Doe",
-    profilePhoto: "https://via.placeholder.com/100",
+    profilePhoto: "/images/JaneDoe.jpeg",
     skillsOffered: ["React", "Photoshop", "Public Speaking"],
     skillsWanted: ["Python", "UX Design"],
     availability: "Weekends, Evenings",
