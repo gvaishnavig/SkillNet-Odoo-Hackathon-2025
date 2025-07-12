@@ -11,7 +11,7 @@ const Home = () => {
       skillsWanted: ["Python", "Design"],
       availability: "Weekends",
       rating: 4.5,
-      profilePhoto: "https://via.placeholder.com/50",
+      profilePhoto: "/images/MarcDemo.jpeg",
     },
     {
       name: "Riya Sharma",
@@ -19,7 +19,7 @@ const Home = () => {
       skillsWanted: ["Video Editing"],
       availability: "Evenings",
       rating: 4.8,
-      profilePhoto: "https://via.placeholder.com/50",
+      profilePhoto: "/images/RiyaSharma.jpeg",
     },
   ];
 
